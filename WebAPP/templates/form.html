@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Smart Pricing</title>
+{% endblock head %}
+
+{% block body %}
+<body>
+	<div class="booking-form">
+		<form action="/results">
+			<div class="form-header">
+				<h1>List Information</h1>
+			</div>
+			<div class="form-body">
+				
+					<table>
+						<tr>
+							<td>
+								<label for="OverallHousingQuality">Overall Housing Quality</label><br>
+								<input type="number" name="Overall Housing Quality" required>
+							</td>
+							<td>
+								<label for="NumberBathroom">Number of Full Bathrooms</label><br>
+								<input type="number" name="NumberBathroom" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="Garage">Garage Area</label><br>
+								<input type="number" name="Garage" required>
+							</td>
+							<td>
+								<label for="Lot Area">Lot Area</label><br>
+								<input type="number" name="Lot Area" required>
+							</td>
+						</tr>
+					</table>
+					<input value = "Submit" type="submit", class="btn-primary" method="get"></input>
+			</div>
+		</form>
+	</div>
+</body>  
+{% endblock body %}
