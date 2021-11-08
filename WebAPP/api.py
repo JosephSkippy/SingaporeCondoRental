@@ -10,17 +10,19 @@ import numpy as np
 import pandas as pd
 import re
 
+
 # Open relevant models
-
-
 with open("static\models\XGBoost_Model.pkl", "rb") as to_read:
     model = pickle.load(to_read)
 
 with open("static\models\District_Transformer.pkl", "rb") as to_read:
      transformer = pickle.load(to_read)
 
+#read main file        
 main_df = pd.read_csv('..\Data\scraped_df.csv')
-        
+main_df.loc[main_df.district == 'Changi Airport / Changi Village (D17)', 'mrt_name'] = 'Tampines East Mrt'
+main_df.dropna(subset=['mrt_name'], inplace=True)
+
 def convert(x_input):
     """
     Function makes sure the features are fed to the model in the same order the
@@ -74,3 +76,14 @@ def make_prediction(x_input):
     return int(model.predict(model_input))
     
 district_list = main_df.district.unique().tolist()
+mrt_list = main_df.mrt_name.unique().tolist()
+
+district_mrt = dict()
+for district_key in district_list:
+    value = list(set(main_df.loc[main_df.district == district_key, 'mrt_name'].values))
+    district_mrt[district_key] = value
+
+# for import
+district_list    
+# for import
+district_mrt
