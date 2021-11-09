@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from api import district_list, district_mrt, mrt_list
+from api import district_list, district_mrt, mrt_list, year_min, year_max
 import numpy as np
 import pandas as pd
 import pickle
@@ -16,6 +16,8 @@ def form():
                             district_list = district_list,
                             district_mrt = district_mrt_json,
                             mrt_list = mrt_list,
+                            year_min = int(year_min),
+                            year_max = int(year_max)
                            
      )
 

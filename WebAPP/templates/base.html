@@ -86,7 +86,7 @@
 
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-8">
                     <div class="select-style">
                         <select name="district" id='district' required>
                           <option value="">Select District</option>
@@ -96,40 +96,39 @@
  
                         </select>
                     </div>
-                </div>              
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="inputquality" class="select-style">Year Built</label>
-                    <input type="number" class="form-control" id="yearbuilt" required>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     <div class="select-style">
                         <select name="mrt" id='mrt' required>
-                          <option value="">Select MRT</option>
+                          <option value=""></option>
                         {% for idx in range(mrt_list|length) %}
                             <option value="{{mrt_list[idx]}}" >{{ mrt_list[idx] }}</option>
                         {% endfor %}
- 
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="year_built" class="select-style">Year Built</label>
+                    <input type="number" class="form-control" id="yearbuilt" min= {{ year_min}} max= {{ year_max}} placeholder="Input between {{year_min, year_max }}" required>
+                </div>
                 <div class="col-6">
                     <label for="inputAddress2" class="form-label">MRT Walking Time</label>
-                    <input type="text" class="form-control"required id="inputAddress2" placeholder="Minutes">
+                    <input type="number" class="form-control"required id="inputAddress2" min = 0 , max= 30, placeholder="Minutes (Max 30min)">
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <label for="inputAddress" class="form-label">Square Feet</label>
-                    <input type="text" class="form-control"required id="sqft">
+                    <input type="number" class="form-control"required id="sqft" min =100, max = 11128, placeholder = 'Min 100, Max 12000'>
                 </div>
-                <div class="col-6">
-                    <label for="inputAddress2" class="form-label">Square Feet</label>
-                    <input type="text" class="form-control"required id="inputAddress2" placeholder="Apartment, studio, or floor">
+                <div class="checkbox">
+                    <label><input type="checkbox" value="Swimming Pool" >Swimming Pool</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="Gym" >Gym</label>
                 </div>
             </div>
             

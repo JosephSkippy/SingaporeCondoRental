@@ -78,12 +78,18 @@ def make_prediction(x_input):
 district_list = main_df.district.unique().tolist()
 mrt_list = main_df.mrt_name.unique().tolist()
 
+year_min = main_df.built_year.min()
+year_max = main_df.built_year.max()
+
 district_mrt = dict()
 for district_key in district_list:
     value = list(set(main_df.loc[main_df.district == district_key, 'mrt_name'].values))
     district_mrt[district_key] = value
 
 # for import
-district_list    
+district_list
+
 # for import
 district_mrt
+
+
