@@ -46,16 +46,16 @@ def convert(x_input):
     Dhoby_Ghaut_MRT = 0
     Holland_Village_MRT = 0
     
-    if x_input['mrt_name'] == 'Dhoby Ghaut MRT':
+    if x_input['mrt'] == 'Dhoby Ghaut MRT':
         Dhoby_Ghaut_MRT = 1
     
-    if x_input['mrt_name'] == 'Holland Village MRT':
+    if x_input['mrt'] == 'Holland Village MRT':
         Holland_Village_MRT = 1    
       
     model_input = np.array([
-        x_input['sqft'],
-        x_input['built_year'],
-        x_input['walking_time_to_mrt'],
+        int(x_input['sqft']),
+        int(x_input['built_year']),
+        int(x_input['walking_time_to_mrt']),
         district_number,
         Dhoby_Ghaut_MRT,
         Holland_Village_MRT
@@ -92,4 +92,16 @@ district_list
 # for import
 district_mrt
 
+if __name__ == '__main__':
+    user_input = {
+        'district' : 'Pasir Ris / Tampines (D18)',
+        'mrt' : 'Tampines MRT',
+        'built_year' : 1980,
+        'walking_time_to_mrt' : 22,
+        'sqft' : 123,
+        'pool' : 1,
+        'gym': 1,
+    }
 
+    result = make_prediction(user_input)
+    print(result)

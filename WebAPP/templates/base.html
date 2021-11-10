@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='style2.css')}}">
+    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='style3.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -32,44 +32,6 @@
 
 </head>
 <body>
-    <style>
-        .table {
-            float: left;
-            padding: 2em;
-            position: relative;
-            margin-top: 2%;
-            margin-left: 2%;
-            background-color:white;
-            max-width: 50%;
-            border-radius: 0.5em;
-        }
-
-        body {
-            background-image:url('background.jpg');
-            background-size:cover;
-            background-attachment: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            }
-        
-        .btn-primary{
-            color : white;
-            margin-top: 2em;
-            border-radius: 0.2em;
-            background-color: rgb(83, 146, 249);
-            border-color: rgb(83, 146, 249)n;
-
-            
-        }
-
-        .welcome {
-            color : white;
-            margin-top: 2em;
-            margin-left: 2em;
-        }
-
-    </style>
     <div class="container">
         <div class='welcome'>
             <div class="col-md-12">
@@ -78,10 +40,10 @@
                 </h1>
             </div>
         </div>
-        <form class="table">
+        <form action="/results">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>Listing Information</h1>
+                    <h1>Listing Information</h1>
                 </div>
 
             </div>
@@ -100,7 +62,7 @@
                 <div class="col-4">
                     <div class="select-style">
                         <select name="mrt" id='mrt' required>
-                          <option value=""></option>
+                          <option value="">Select Mrt</option>
                         {% for idx in range(mrt_list|length) %}
                             <option value="{{mrt_list[idx]}}" >{{ mrt_list[idx] }}</option>
                         {% endfor %}
@@ -112,23 +74,23 @@
             <div class="row">
                 <div class="col-6">
                     <label for="year_built" class="select-style">Year Built</label>
-                    <input type="number" class="form-control" id="yearbuilt" min= {{ year_min}} max= {{ year_max}} placeholder="Input between {{year_min, year_max }}" required>
+                    <input type="number" class="form-control" name=built_year id="yearbuilt" min= {{ year_min}} max= {{ year_max}} placeholder="Input between {{year_min, year_max }}" required>
                 </div>
                 <div class="col-6">
                     <label for="inputAddress2" class="form-label">MRT Walking Time</label>
-                    <input type="number" class="form-control"required id="inputAddress2" min = 0 , max= 30, placeholder="Minutes (Max 30min)">
+                    <input type="number" class="form-control" name=walking_time_to_mrt id="inputAddress2" min = 0 , max= 30, placeholder="Minutes (Max 30min)" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <label for="inputAddress" class="form-label">Square Feet</label>
-                    <input type="number" class="form-control"required id="sqft" min =100, max = 11128, placeholder = 'Min 100, Max 12000'>
+                    <input type="number" class="form-control" name=sqft id="sqft" min =100, max = 11128, placeholder = 'Min 100, Max 12000' required>
                 </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="Swimming Pool" >Swimming Pool</label>
+                <div class="checkbox" id='checkbox'>
+                    <label><input type="checkbox" name=pool value= 1 >Swimming Pool</label>
                 </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="Gym" >Gym</label>
+                <div class="checkbox" id='checkbox'>
+                    <label><input type="checkbox" name=gym value= 1 >Gym</label>
                 </div>
             </div>
             
@@ -136,15 +98,6 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
-
-
-
-
-
-
-
-
-
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
