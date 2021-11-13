@@ -10,11 +10,64 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <main role="main" class="container">
-      <div class="page-bg">
-      </div>
-      <ul>
-        <li><a class="active" href="/predict">Predictor</a></li>
-      </ul>
-    </main>
+  <main role="main" class="container">
+    <div class="page-bg">
+    </div>
+    <ul>
+      <li><a href="/about">About</a></li>
+    </ul>
+	  <div class="row">
+	    <div class="col-md-8">
+        <form class='ans'>
+          <a href="/predict" class="previous">&laquo; Go back</a>
+          <h4>
+              <br>  Suggested price:
+          </h4>
+          <h3>
+              ${{ prediction }}/month
+          </h3>
+          <h5>
+            Check out some similar unit that you might be interested in!
+          </h5>
+          <br>
+          <div class="card-deck">
+            <div class="card w-50">
+              <img src={{ picture[0] }} class="card-img-top" alt="Condo">
+              <div class="card-body">
+                <h6 class="card-title">${{ price_month[0] }}/month</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ district[0] }} - {{ detailed_address[0] }}</h6>
+                <p class="card-text">Beds:{{ bedrooms[0] }}
+                  <br> Bathroom: {{ bathrooms[0] }} 
+                  <br> Beds: {{ bedrooms[0] }} 
+                  <br> sqft: {{ sqft[0] }}
+                  <br> Nearest_Mrt: {{ mrt[0] }}
+                  <br> MRT Walk time: {{walking_time_to_mrt[0]}}
+                </p>
+                <a href={{ link[0] }} class="btn btn-secondary">Check it out</a>
+
+              </div>
+            </div>
+            <div class="card-deck">
+              <div class="card w-50">
+                <img src={{ picture[1] }} class="card-img-top" alt="Condo">
+                <div class="card-body">
+                  <h6 class="card-title">${{ price_month[1] }}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ district[1] }} - {{ detailed_address[1] }}</h6>
+                  <p class="card-text">Beds:{{ bedrooms[1] }}
+                    <br> Bathroom: {{ bathrooms[1] }} 
+                    <br> Beds: {{ bedrooms[1] }} 
+                    <br> sqft: {{ sqft[1] }}
+                    <br> Nearest_Mrt: {{ mrt[1] }}
+                    <br> MRT Walk time: {{walking_time_to_mrt[1]}}
+                  </p>
+                  <a href={{ link[1] }} class="btn btn-secondary">Check it out</a>
+  
+                </div>
+              </div>
+          </div>
+        </form>
+
+	    </div>
+	  </div>
+	</main>
 </body>
