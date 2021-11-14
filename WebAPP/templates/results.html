@@ -30,12 +30,13 @@
             Check out some similar unit that you might be interested in!
           </h5>
           <br>
+          
           <div class="card-deck">
             <div class="card w-50">
               <img src={{ picture[0] }} class="card-img-top" alt="Condo">
               <div class="card-body">
                 <h6 class="card-title">${{ price_month[0] }}/month</h6>
-                <h6 class="card-subtitle mb-2 text-muted">{{ district[0] }} - {{ detailed_address[0] }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">District {{ district[0] }} - {{ detailed_address[0] }}</h6>
                 <p class="card-text">Beds:{{ bedrooms[0] }}
                   <br> Bathroom: {{ bathrooms[0] }} 
                   <br> Beds: {{ bedrooms[0] }} 
@@ -44,26 +45,38 @@
                   <br> MRT Walk time: {{walking_time_to_mrt[0]}}
                 </p>
                 <a href={{ link[0] }} class="btn btn-secondary">Check it out</a>
-
+              </div>
+            </div>                    
+            <div class="card w-50">
+              <img src={{ picture[1] }} class="card-img-top" alt="Condo">
+              <div class="card-body">
+                <h6 class="card-title">${{ price_month[0] }}/month</h6>
+                <h6 class="card-subtitle mb-2 text-muted">District {{ district[1] }} - {{ detailed_address[1] }}</h6>
+                <p class="card-text">Beds:{{ bedrooms[1] }}
+                  <br> Bathroom: {{ bathrooms[1] }} 
+                  <br> Beds: {{ bedrooms[1] }} 
+                  <br> sqft: {{ sqft[1] }}
+                  <br> Nearest_Mrt: {{ mrt[1] }}
+                  <br> MRT Walk time: {{walking_time_to_mrt[1]}}
+                </p>
+                <a href={{ link[1] }} class="btn btn-secondary">Check it out</a>
               </div>
             </div>
-            <div class="card-deck">
-              <div class="card w-50">
-                <img src={{ picture[1] }} class="card-img-top" alt="Condo">
-                <div class="card-body">
-                  <h6 class="card-title">${{ price_month[1] }}</h6>
-                  <h6 class="card-subtitle mb-2 text-muted">{{ district[1] }} - {{ detailed_address[1] }}</h6>
-                  <p class="card-text">Beds:{{ bedrooms[1] }}
-                    <br> Bathroom: {{ bathrooms[1] }} 
-                    <br> Beds: {{ bedrooms[1] }} 
-                    <br> sqft: {{ sqft[1] }}
-                    <br> Nearest_Mrt: {{ mrt[1] }}
-                    <br> MRT Walk time: {{walking_time_to_mrt[1]}}
-                  </p>
-                  <a href={{ link[1] }} class="btn btn-secondary">Check it out</a>
-  
-                </div>
+            <div class="card w-50">
+              <img src={{ picture[2] }} class="card-img-top" alt="Condo">
+              <div class="card-body">
+                <h6 class="card-title">${{ price_month[2] }}/month</h6>
+                <h6 class="card-subtitle mb-2 text-muted">District {{ district[2] }} - {{ detailed_address[2] }}</h6>
+                <p class="card-text">Beds:{{ bedrooms[2] }}
+                  <br> Bathroom: {{ bathrooms[2] }} 
+                  <br> Beds: {{ bedrooms[2] }} 
+                  <br> sqft: {{ sqft[2] }}
+                  <br> Nearest_Mrt: {{ mrt[2] }}
+                  <br> MRT Walk time: {{walking_time_to_mrt[2]}}
+                </p>
+                <a href={{ link[2] }} class="btn btn-secondary">Check it out</a>
               </div>
+            </div> 
           </div>
         </form>
 
