@@ -40,8 +40,10 @@ def predict():
     built_year = recommendation[6]
     mrt = recommendation[7]
     walking_time_to_mrt = recommendation[8]
-    link = recommendation[9]
-    picture = recommendation[10]
+    pool = recommendation[9]
+    gym = recommendation[10]
+    link = recommendation[11]
+    picture = recommendation[12]
     
     return render_template('results.html', 
                             prediction = prediction,
@@ -54,6 +56,8 @@ def predict():
                             built_year = built_year,
                             mrt = mrt,
                             walking_time_to_mrt = walking_time_to_mrt,
+                            pool = pool,
+                            gym = gym,
                             link = link,
                             picture = picture)
 

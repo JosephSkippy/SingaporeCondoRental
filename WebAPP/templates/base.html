@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='style3.css')}}">
+    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='main4.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -33,6 +33,9 @@
 </head>
 <body>
     <div class="container">
+        <ul>
+            <li><a href="/about">About</a></li>
+        </ul>
         <div class='welcome'>
             <div class="col-md-12">
                 <h1>
@@ -87,9 +90,11 @@
                     <input type="number" class="form-control" name=sqft id="sqft" min =100, max = 11128, placeholder = 'Min 100, Max 12000' required>
                 </div>
                 <div class="checkbox" id='checkbox'>
+                    <input type="hidden" name=pool value= 0 >
                     <label><input type="checkbox" name=pool value= 1 >Swimming Pool</label>
                 </div>
                 <div class="checkbox" id='checkbox'>
+                    <input type="hidden" name=gym value= 0 >
                     <label><input type="checkbox" name=gym value= 1 >Gym</label>
                 </div>
             </div>

@@ -153,7 +153,7 @@ def recommendlisting(user_input, prediction):
 
     user_input['district'] = district_number_before_transform
     user_input['price_month'] = prediction
-       
+
     X = customtransformation(user_input)
     
     index = neigh.kneighbors(X,  return_distance=False)
@@ -170,6 +170,8 @@ def recommendlisting(user_input, prediction):
     built_year = sim.built_year.tolist()
     mrt = sim.mrt.tolist()
     walking_time_to_mrt = sim.walking_time_to_mrt.tolist()
+    pool = sim.pool.tolist()
+    gym = sim.gym.tolist()
     link = sim.link.tolist()
     picture_url	= sim.picture_url.tolist()
     
@@ -181,7 +183,9 @@ def recommendlisting(user_input, prediction):
         sqft, 
         built_year, 
         mrt, 
-        walking_time_to_mrt, 
+        walking_time_to_mrt,
+        pool,
+        gym, 
         link, 
         picture_url)
 
