@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='main4.css')}}">
+    <link rel='stylesheet' type = 'text/css' href= "{{url_for('static', filename='main8.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -88,6 +88,20 @@
                 <div class="col-6">
                     <label for="inputAddress" class="form-label">Square Feet</label>
                     <input type="number" class="form-control" name=sqft id="sqft" min =100, max = 11128, placeholder = 'Min 100, Max 12000' required>
+                </div>
+                <div class="col-6">
+                    <div class="select-style">
+                        <label for="cluster_label" class="form-label">Neighbhourhood</label>
+                        <select name="cluster_label" id='cluster_label' required>
+                          <option value="">Select neighbhourhood</option>
+                          <option value=0>Quiet & Peaceful</option>
+                          <option value=1>Foodie!</option>
+                          <option value=2>No Nightlife</option>
+                          <option value=3>Don't Need outdoor</option>
+                          <option value=4>Don't Need entertainment</option>
+                          <option value=5>I need everything</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="checkbox" id='checkbox'>
                     <input type="hidden" name=pool value= 0 >

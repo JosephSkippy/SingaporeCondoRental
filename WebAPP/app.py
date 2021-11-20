@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from api import district_list, district_mrt, mrt_list, year_min, year_max, make_prediction, recommendlisting
+from api import district_list, district_mrt, mrt_list, year_min, year_max, make_prediction, recommendlisting, recommendneighbhour
 import numpy as np
 import pandas as pd
 import pickle
@@ -7,7 +7,6 @@ import json
 
 app = Flask(__name__)
 district_mrt_json = json.dumps(district_mrt)
-
 
 @app.route('/')
 @app.route("/predict", methods=["POST", "GET"])
@@ -29,6 +28,7 @@ def predict():
     
     prediction = make_prediction(user_input)
 
+    #recommend similar listing
     recommendation = recommendlisting(user_input, prediction)
 
     price_month = recommendation[0]
@@ -44,9 +44,34 @@ def predict():
     gym = recommendation[10]
     link = recommendation[11]
     picture = recommendation[12]
+
+
+    #recommend similar neighbhourhood
+    recommendation_neigh = recommendneighbhour(user_input, prediction)
+
+    price_month_neigh = recommendation_neigh[0]
+    district_neigh = recommendation_neigh[1]
+    detailed_address_neigh = recommendation_neigh[2]
+    bedrooms_neigh = recommendation_neigh[3]
+    bathrooms_neigh = recommendation_neigh[4]
+    sqft_neigh = recommendation_neigh[5]
+    built_year_neigh = recommendation_neigh[6]
+    mrt_neigh = recommendation_neigh[7]
+    walking_time_to_mrt_neigh = recommendation_neigh[8]
+    pool_neigh = recommendation_neigh[9]
+    gym_neigh = recommendation_neigh[10]
+    link_neigh = recommendation_neigh[11]
+    picture_neigh = recommendation_neigh[12]
+
+
+
+
+
     
     return render_template('results.html', 
                             prediction = prediction,
+                            
+                            
                             price_month = price_month,
                             district = district,
                             detailed_address = detailed_address,
@@ -59,7 +84,24 @@ def predict():
                             pool = pool,
                             gym = gym,
                             link = link,
-                            picture = picture)
+                            picture = picture,
+                            
+
+                            price_month_neigh = price_month_neigh,
+                            district_neigh = district_neigh,
+                            detailed_address_neigh = detailed_address_neigh,
+                            bedrooms_neigh = bedrooms_neigh,
+                            bathrooms_neigh = bathrooms_neigh,
+                            sqft_neigh = sqft_neigh,
+                            built_year_neigh = built_year_neigh,
+                            mrt_neigh = mrt_neigh,
+                            walking_time_to_mrt_neigh = walking_time_to_mrt_neigh,
+                            pool_neigh = pool_neigh,
+                            gym_neigh = gym_neigh,
+                            link_neigh = link_neigh,
+                            picture_neigh = picture_neigh
+                            
+                            )
 
 if __name__ == "__main__":
     app.run(debug=True)

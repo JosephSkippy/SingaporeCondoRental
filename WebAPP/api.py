@@ -111,7 +111,15 @@ with open("static\models\onehotencoder_Transformer.pkl", "rb") as to_load:
 
 with open("static\models\FeatureImportanceScale.joblib", "rb") as to_load:
     feature_importance = dill.load(to_load)
-       
+
+with open("static\models\KneighbourCluster.pkl", "rb") as to_load:
+    neigh_clus = pickle.load(to_load)
+
+with open("static\models\FeatureImportanceScaleCluster.joblib", "rb") as to_load:
+    feature_importance_cluster = dill.load(to_load)
+
+debug = False
+
 def customtransformation(X):
     """
     Function to combine
@@ -124,8 +132,8 @@ def customtransformation(X):
     #feature of OHE
     feature1 = ct.named_transformers_.onehotencoder.get_feature_names().tolist()
     
-    #remaining feature
-    feature2 = ['built_year', 'walking_time_to_mrt', 'sqft', 'price_month', 'district', 'pool', 'gym']
+    #remaining feature Note the feature order is important as this is the results of OHE transformation
+    feature2 = ['built_year', 'walking_time_to_mrt', 'sqft', 'price_month', 'district', 'cluster_label', 'pool', 'gym', ]
 
     #combine 
     all_feature = feature1 + feature2
@@ -133,7 +141,7 @@ def customtransformation(X):
     X = pd.DataFrame.from_dict(X, orient='index').T
     
     #rearrange columns as per fit
-    rearrange = ['district', 'mrt', 'built_year', 'walking_time_to_mrt', 'sqft', 'pool', 'gym', 'price_month']
+    rearrange = ['district', 'mrt', 'built_year', 'walking_time_to_mrt', 'sqft', 'pool', 'gym', 'price_month', 'cluster_label']
 
     X = X[rearrange]
     
@@ -143,23 +151,76 @@ def customtransformation(X):
         X[col] = pd.to_numeric(X[col], errors='ignore')
     #transform to Dataframe for Feature Importance    
     X_tr = pd.DataFrame(ct.transform(X).toarray(), columns=all_feature)
-    X_tr = feature_importance.transform(X_tr)
-    
+        
     return X_tr
 
 def recommendlisting(user_input, prediction):
+    user_input_sim = user_input.copy()
 
-    district_number_before_transform = int(re.findall(f'D([\d]+)',  user_input['district'])[0])
+    district_number_before_transform = int(re.findall(f'D([\d]+)',  user_input_sim['district'])[0])
 
-    user_input['district'] = district_number_before_transform
-    user_input['price_month'] = prediction
+    user_input_sim['district'] = district_number_before_transform
+    user_input_sim['price_month'] = prediction
 
-    X = customtransformation(user_input)
+    X = customtransformation(user_input_sim)
+    X = feature_importance.transform(X)
+    
+    X = X.drop('cluster_label', axis=1)
     
     index = neigh.kneighbors(X,  return_distance=False)
     selected_index = np.reshape(index, -1)
     
     sim = df_recommender.iloc[selected_index]
+    
+    if debug == True:
+        return sim
+
+    price_month = sim.price_month.tolist()
+    district = sim.district.tolist()
+    detailed_address = sim.detailed_address.tolist()
+    bedrooms = sim.bedrooms.tolist()
+    bathrooms = sim.bathrooms.tolist()
+    sqft = sim.sqft.tolist()
+    built_year = sim.built_year.tolist()
+    mrt = sim.mrt.tolist()
+    walking_time_to_mrt = sim.walking_time_to_mrt.tolist()
+    pool = sim.pool.tolist()
+    gym = sim.gym.tolist()
+    link = sim.link.tolist()
+    picture_url	= sim.picture_url.tolist()
+    
+    return (price_month, 
+        district, 
+        detailed_address, 
+        bedrooms, 
+        bathrooms, 
+        sqft, 
+        built_year, 
+        mrt, 
+        walking_time_to_mrt,
+        pool,
+        gym, 
+        link, 
+        picture_url)
+
+def recommendneighbhour(user_input, prediction):
+    user_input_neighbhour = user_input.copy()
+    district_number_before_transform = int(re.findall(f'D([\d]+)',  user_input_neighbhour['district'])[0])
+    user_input_neighbhour['district'] = district_number_before_transform
+    user_input_neighbhour['price_month'] = prediction   
+
+    X = customtransformation(user_input_neighbhour)
+    X = feature_importance_cluster.transform(X)
+    
+    X = X.drop('district', axis=1)
+    
+    index = neigh_clus.kneighbors(X,  return_distance=False)
+    selected_index = np.reshape(index, -1)
+    
+    sim = df_recommender.iloc[selected_index]
+    
+    if debug == True:
+        return sim    
     
     price_month = sim.price_month.tolist()
     district = sim.district.tolist()
@@ -197,11 +258,17 @@ if __name__ == '__main__':
         'walking_time_to_mrt' : '22',
         'sqft' : '123',
         'pool' : '1',
-        'gym': '1'
+        'gym': '1',
+        'cluster_label' : 2
     }
+
+    debug = True
 
     prediction = make_prediction(user_input)
     print(prediction)
     listing = recommendlisting(user_input, prediction)
+    print(listing)
+    neighbhourhood = recommendneighbhour(user_input, prediction)
+    print(neighbhourhood)
 
     
