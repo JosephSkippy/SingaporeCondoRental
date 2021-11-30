@@ -10,17 +10,19 @@ import dill
 import numpy as np
 import pandas as pd
 import re
+import os
+
 
 #--------------------prediction------------------------
 # Open relevant models
-with open("static\models\XGBoost_Model.pkl", "rb") as to_read:
-    model = pickle.load(to_read)
+with open(os.path.abspath("static/models/XGBoost_Model.joblib"), "rb") as to_read:
+    model = dill.load(to_read)
 
-with open("static\models\District_Transformer.pkl", "rb") as to_read:
+with open(os.path.abspath("static/models/District_Transformer.pkl"), "rb") as to_read:
      transformer = pickle.load(to_read)
 
 #read main file        
-main_df = pd.read_csv('..\Data\main_df.csv')
+main_df = pd.read_csv('static/database/main_df.csv')
 main_df.loc[main_df.district == 'Changi Airport / Changi Village (D17)', 'mrt_name'] = 'Tampines East Mrt'
 main_df.dropna(subset=['mrt_name'], inplace=True)
 
@@ -100,22 +102,22 @@ district_mrt
 
 
 #----------------------------recommendation-----------------------
-with open("static\models\Kneighbour.pkl", "rb") as to_load:
+with open(os.path.abspath("static/models/Kneighbour.pkl"), "rb") as to_load:
     neigh = pickle.load(to_load)
 
-with open("static\database\df_recommender.pkl", "rb") as to_load:
+with open(os.path.abspath("static/database/df_recommender.pkl"), "rb") as to_load:
     df_recommender = pickle.load(to_load)   
 
-with open("static\models\onehotencoder_Transformer.pkl", "rb") as to_load:
+with open(os.path.abspath("static/models/onehotencoder_Transformer.pkl"), "rb") as to_load:
     ct = pickle.load(to_load)
 
-with open("static\models\FeatureImportanceScale.joblib", "rb") as to_load:
+with open(os.path.abspath("static/models/FeatureImportanceScale.joblib"), "rb") as to_load:
     feature_importance = dill.load(to_load)
 
-with open("static\models\KneighbourCluster.pkl", "rb") as to_load:
+with open(os.path.abspath("static/models/KneighbourCluster.pkl"), "rb") as to_load:
     neigh_clus = pickle.load(to_load)
 
-with open("static\models\FeatureImportanceScaleCluster.joblib", "rb") as to_load:
+with open(os.path.abspath("static/models/FeatureImportanceScaleCluster.joblib"), "rb") as to_load:
     feature_importance_cluster = dill.load(to_load)
 
 debug = False
