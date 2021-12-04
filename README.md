@@ -37,7 +37,7 @@ Refer to [Foursquare documentation](https://developer.foursquare.com/docs/build-
 
 With **UMAP** for dimension reduction & **HDBscan clustering**, 5 distinct neighbhourhoods have been found.
 
-![GitHub Dark](picture/cluster.png#gh-dark-mode-only)
+![GitHub Dark](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png)
 
 
 # Files
@@ -76,7 +76,7 @@ Multivariate analysis of features and target to understand the correlation and p
 5. Outlier (Anomaly) Removal
 
 **EDA**
-1. [District Insight](picture/Analysis_map.html)
+1. [District Insight](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/Analysis_map.html)
 2. Multi-collinearity via Clustering & Correlation Heatmap
 
 **Pre-Processing**
@@ -88,11 +88,11 @@ Multivariate analysis of features and target to understand the correlation and p
 **Model Selection**
 
 **Validation Score**
-- | #rmse_mean | #rmse_std | #adjusted_r2_mean | #adjusted_r2_std
---- | --- | --- | --- |--- |
-LinearRegression | 3127 | 279 | 0.5 | 0.02 |
-SVM Regression | 2110 | 383 | 0.77 | 0.06 |
-XGBoost Regression | 1445 | 329 | 0.88 | 0.04 |
+| - | #rmse_mean | #rmse_std | #adjusted_r2_mean | #adjusted_r2_std |
+|--- | --- | --- | --- |--- |
+|LinearRegression | 3127 | 279 | 0.5 | 0.02 |
+|SVM Regression | 2110 | 383 | 0.77 | 0.06 |
+|XGBoost Regression | 1445 | 329 | 0.88 | 0.04 |
 
 **Test Score**
 <br>Final_XGB_test_rmse: 1298
@@ -105,12 +105,12 @@ XGBoost Regression | 1445 | 329 | 0.88 | 0.04 |
  **Pre-Processing**
  <br>UMAP
 
-![UMAP](picture/UMAP.png)
+![UMAP](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/UMAP.png)
 Cluster with neighbors=12, min_dist=0 were selected as it retains the local cluster structure and global structure
 
  **Clustering**
  <br>HDBscan
-![HDBscan](picture/HDBscan.png)
+![HDBscan](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/HDBscan.png)
 Selection of hyperparameter based on visual
 
 
