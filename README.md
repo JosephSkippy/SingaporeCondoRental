@@ -37,7 +37,7 @@ Refer to [Foursquare documentation](https://developer.foursquare.com/docs/build-
 
 With **UMAP** for dimension reduction & **HDBscan clustering**, 5 distinct neighbhourhoods have been found.
 
-![GitHub Dark](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png)
+![GitHub Dark](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png#gh-light-mode-only)
 
 
 # Files
@@ -105,12 +105,12 @@ Multivariate analysis of features and target to understand the correlation and p
  **Pre-Processing**
  <br>UMAP
 
-![UMAP](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/UMAP.png)
+![UMAP](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/UMAP.png#gh-light-mode-only)
 Cluster with neighbors=12, min_dist=0 were selected as it retains the local cluster structure and global structure
 
  **Clustering**
  <br>HDBscan
-![HDBscan](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/HDBscan.png)
+![HDBscan](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/HDBscan.png#gh-light-mode-only)
 Selection of hyperparameter based on visual
 
 
