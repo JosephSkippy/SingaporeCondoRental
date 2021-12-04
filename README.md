@@ -37,7 +37,7 @@ Refer to [Foursquare documentation](https://developer.foursquare.com/docs/build-
 
 With **UMAP** for dimension reduction & **HDBscan clustering**, 5 distinct neighbhourhoods have been found.
 
-![GitHub Dark](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png#gh-dark-mode-only)
+![GitHub Light](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png#gh-dark-mode-only)
 
 
 # Files
