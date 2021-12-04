@@ -37,7 +37,7 @@ Refer to [Foursquare documentation](https://developer.foursquare.com/docs/build-
 
 With **UMAP** for dimension reduction & **HDBscan clustering**, 5 distinct neighbhourhoods have been found.
 
-![GitHub Light](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png#gh-light-mode-only)
+![GitHub Light](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/cluster.png)
 
 
 # Files
@@ -105,7 +105,7 @@ Multivariate analysis of features and target to understand the correlation and p
  **Pre-Processing**
  <br>UMAP
 
-![UMAP](https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/UMAP.png#gh-dark-mode-only)
+<img src="https://github.com/Joseph-Gan/SingaporeCondoRental/blob/main/Picture/UMAP.png">
 Cluster with neighbors=12, min_dist=0 were selected as it retains the local cluster structure and global structure
 
  **Clustering**
