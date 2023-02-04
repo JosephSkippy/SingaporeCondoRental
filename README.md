@@ -9,7 +9,7 @@ In this project we will create a webapp to predict the monthly rental price for 
 # Executive Summary
 
 **For Predicting Monthly Rental**
-<br>With over 7000 thousands of listings scrapped from property website,  which factors were most predictive of condominium monthly rental have been determined, regression model(XGBoost) was built and deployed via a Flask app on [Heroku](https://smartercondosearch.herokuapp.com/predict)
+<br>With over 7000 thousands of listings scrapped from property website,  which factors were most predictive of condominium monthly rental have been determined, regression model(XGBoost) was built and deployed via a Flask app on [Railway](https://singaporecondorental-production.up.railway.app)
 
 Following are the features that best predict condominium monthly rental:-
 
